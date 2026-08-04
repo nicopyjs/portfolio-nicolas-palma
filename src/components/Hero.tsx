@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion, type Variants } from "framer-motion";
-import { ArrowDown, Mail, MapPin } from "lucide-react";
+import { ArrowDown, Mail, Phone } from "lucide-react";
 import { profile } from "@/lib/data";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 import { Magnetic } from "./Magnetic";
@@ -56,15 +56,21 @@ export function Hero() {
           {profile.role}. {profile.tagline}
         </motion.p>
 
-        <motion.div variants={item} className="mt-4 flex flex-wrap gap-5 text-sm text-ink-500">
-          <span className="flex items-center gap-2">
-            <MapPin size={16} className="text-brand-violet" /> {profile.location}
-          </span>
+        <motion.div
+          variants={item}
+          className="mt-4 flex flex-wrap gap-3 text-sm"
+        >
           <a
             href={`mailto:${profile.email}`}
-            className="flex items-center gap-2 transition-colors hover:text-brand-cyan"
+            className="glass flex items-center gap-2 rounded-full px-4 py-2 text-ink-50 transition-colors hover:text-brand-cyan"
           >
-            <Mail size={16} className="text-brand-violet" /> {profile.email}
+            <Mail size={16} className="text-brand-cyan" /> {profile.email}
+          </a>
+          <a
+            href={`tel:${profile.phone.replace(/\s/g, "")}`}
+            className="glass flex items-center gap-2 rounded-full px-4 py-2 text-ink-50 transition-colors hover:text-brand-cyan"
+          >
+            <Phone size={16} className="text-brand-cyan" /> {profile.phone}
           </a>
         </motion.div>
 
