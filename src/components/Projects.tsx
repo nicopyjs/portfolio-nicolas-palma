@@ -5,7 +5,7 @@ import { projects } from "@/lib/data";
 
 export function Projects() {
   return (
-    <section id="projects" className="relative border-t border-white/5 bg-ink-900 py-28">
+    <section id="projects" className="relative border-t border-ink-700 bg-ink-900 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Portafolio"
@@ -17,9 +17,9 @@ export function Projects() {
           {projects.map((project, i) => (
             <Reveal key={project.name} delay={i * 0.1}>
               <TiltCard className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6">
-                <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-violet/20 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
+                <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-ledger/14 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
-                <span className="font-mono text-xs uppercase tracking-widest text-brand-cyan">
+                <span className="font-mono text-xs uppercase tracking-widest text-ledger">
                   {project.period}
                 </span>
                 <h3 className="mt-2 font-display text-xl font-semibold text-ink-50">
@@ -30,7 +30,7 @@ export function Projects() {
                 <ul className="mt-4 space-y-2">
                   {project.highlights.map((h) => (
                     <li key={h} className="flex gap-2 text-xs text-ink-500">
-                      <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-brand-violet" />
+                      <span className="mt-1.5 h-1 w-1 flex-shrink-0 rounded-full bg-ledger" />
                       {h}
                     </li>
                   ))}
@@ -40,7 +40,7 @@ export function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-white/10 px-3 py-1 font-mono text-[11px] text-ink-300"
+                      className="rounded-full border border-ink-700 px-3 py-1 font-mono text-[11px] text-ink-300"
                     >
                       {tag}
                     </span>

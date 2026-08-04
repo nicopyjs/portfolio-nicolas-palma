@@ -32,7 +32,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="font-display text-lg font-semibold text-ink-50">
-          NP<span className="text-brand-violet">.</span>
+          NP<span className="text-ledger">.</span>
         </a>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -40,7 +40,7 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-ink-300 transition-colors hover:text-brand-cyan"
+                className="text-sm text-ink-300 transition-colors hover:text-ledger"
               >
                 {link.label}
               </a>
@@ -50,7 +50,7 @@ export function Navbar() {
 
         <a
           href="#contact"
-          className="hidden rounded-full border border-brand-violet/40 px-4 py-2 text-sm text-ink-50 transition-colors hover:bg-brand-violet/10 md:inline-block"
+          className="hidden rounded-full border border-ledger/40 px-4 py-2 text-sm text-ink-50 transition-colors hover:bg-ledger/10 md:inline-block"
         >
           Hablemos
         </a>
@@ -77,7 +77,7 @@ export function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block px-6 py-4 text-ink-300 hover:text-brand-cyan"
+                  className="block px-6 py-4 text-ink-300 hover:text-ledger"
                 >
                   {link.label}
                 </a>

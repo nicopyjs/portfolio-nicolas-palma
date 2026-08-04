@@ -6,11 +6,11 @@ import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 export function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden py-28">
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-violet/10 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ledger/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <Reveal>
-          <span className="font-mono text-sm uppercase tracking-[0.2em] text-brand-cyan">
+          <span className="font-mono text-sm uppercase tracking-[0.2em] text-ledger">
             Contacto
           </span>
           <h2 className="mt-3 font-display text-3xl font-semibold text-ink-50 sm:text-4xl">
@@ -25,20 +25,20 @@ export function Contact() {
         <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href={`mailto:${profile.email}`}
-            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-violet to-brand-cyan px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-brand-violet/20 transition-transform hover:scale-105"
+            className="flex items-center gap-2 rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-colors hover:bg-ledger-glow"
           >
             <Mail size={16} /> {profile.email}
           </a>
           <a
             href={`tel:${profile.phone.replace(/\s/g, "")}`}
-            className="flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-ink-50 transition-colors hover:bg-white/5"
+            className="flex items-center gap-2 rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-colors hover:bg-ink-800"
           >
             <Phone size={16} /> {profile.phone}
           </a>
         </Reveal>
 
         <Reveal delay={0.25} className="mt-6 flex items-center justify-center gap-2 text-sm text-ink-500">
-          <MapPin size={14} className="text-brand-violet" /> {profile.location}
+          <MapPin size={14} className="text-ledger" /> {profile.location}
         </Reveal>
 
         <Reveal delay={0.3} className="mt-8 flex items-center justify-center gap-4">
@@ -47,7 +47,7 @@ export function Contact() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="rounded-full border border-white/15 p-3 text-ink-50 transition-colors hover:border-brand-cyan/50 hover:text-brand-cyan"
+            className="rounded-full border border-ink-700 p-3 text-ink-50 transition-colors hover:border-ledger/50 hover:text-ledger"
           >
             <GithubIcon size={18} />
           </a>
@@ -56,7 +56,7 @@ export function Contact() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="rounded-full border border-white/15 p-3 text-ink-50 transition-colors hover:border-brand-cyan/50 hover:text-brand-cyan"
+            className="rounded-full border border-ink-700 p-3 text-ink-50 transition-colors hover:border-ledger/50 hover:text-ledger"
           >
             <LinkedinIcon size={18} />
           </a>

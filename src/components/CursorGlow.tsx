@@ -23,7 +23,7 @@ export function CursorGlow() {
   return (
     <motion.div
       style={{ left: springX, top: springY }}
-      className="pointer-events-none fixed z-30 hidden h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-violet/10 blur-[110px] mix-blend-screen sm:block"
+      className="pointer-events-none fixed z-30 hidden h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ledger/8 blur-[110px] mix-blend-screen sm:block"
     />
   );
 }

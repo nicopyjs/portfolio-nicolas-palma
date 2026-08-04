@@ -15,16 +15,23 @@ const stats = [
 
 export function Stats() {
   return (
-    <section className="relative border-t border-white/5 bg-ink py-14">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 sm:grid-cols-4">
-        {stats.map((s, i) => (
-          <Reveal key={s.label} delay={i * 0.08} className="text-center">
-            <div className="text-gradient font-display text-4xl font-semibold sm:text-5xl">
-              <Counter value={s.value} suffix={s.suffix} />
-            </div>
-            <p className="mt-2 text-xs uppercase tracking-widest text-ink-500">{s.label}</p>
-          </Reveal>
-        ))}
+    <section className="relative border-y border-ink-700 bg-ink py-14">
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="mb-6 flex items-center justify-between font-mono text-[11px] uppercase tracking-widest text-ink-500">
+          <span>Balance profesional</span>
+          <span>Al cierre de este mes</span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 border-t border-ink-700 pt-8 sm:grid-cols-4">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 0.08} className="text-center sm:text-left">
+              <div className="text-gradient tabular-nums font-display text-4xl font-semibold sm:text-5xl">
+                <Counter value={s.value} suffix={s.suffix} />
+              </div>
+              <p className="mt-2 text-xs uppercase tracking-widest text-ink-500">{s.label}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

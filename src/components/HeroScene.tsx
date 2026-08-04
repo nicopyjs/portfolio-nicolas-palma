@@ -1,61 +1,89 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Sparkles } from "@react-three/drei";
+import { Sparkles } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { useRef, useState } from "react";
+import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-function Core() {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const [pointer, setPointer] = useState({ x: 0, y: 0 });
+const SERIES = [1.1, 1.8, 0.9, 2.3, 1.5, 2.0, 1.2, 1.7, 0.85];
+const SPACING = 0.62;
+const BASE_Y = -1.2;
 
-  useFrame((state, delta) => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.x += delta * 0.08;
-    meshRef.current.rotation.y += delta * 0.12;
-
-    const targetX = state.pointer.y * 0.25;
-    const targetY = state.pointer.x * 0.35;
-    setPointer((prev) => ({
-      x: THREE.MathUtils.lerp(prev.x, targetX, 0.04),
-      y: THREE.MathUtils.lerp(prev.y, targetY, 0.04),
-    }));
-    meshRef.current.rotation.x += pointer.x * delta;
-    meshRef.current.rotation.y += pointer.y * delta;
-  });
-
-  return (
-    <Float speed={1.4} rotationIntensity={0.6} floatIntensity={1.2}>
-      <mesh ref={meshRef}>
-        <icosahedronGeometry args={[1.6, 4]} />
-        <MeshDistortMaterial
-          color="#8b5cf6"
-          emissive="#22d3ee"
-          emissiveIntensity={0.15}
-          distort={0.42}
-          speed={1.6}
-          roughness={0.15}
-          metalness={0.6}
-          wireframe={false}
-        />
-      </mesh>
-    </Float>
+function DataChart() {
+  const groupRef = useRef<THREE.Group>(null);
+  const barsRef = useRef<(THREE.Mesh | null)[]>([]);
+  const count = SERIES.length;
+  const linePositions = useMemo(() => new Float32Array(count * 3), [count]);
+  const lineGeometry = useMemo(() => {
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute("position", new THREE.BufferAttribute(linePositions, 3));
+    return geom;
+  }, [linePositions]);
+  const lineObject = useMemo(
+    () =>
+      new THREE.Line(
+        lineGeometry,
+        new THREE.LineBasicMaterial({ color: "#6be39b", transparent: true, opacity: 0.85 })
+      ),
+    [lineGeometry]
   );
-}
 
-function WireCore() {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame((_, delta) => {
-    if (!ref.current) return;
-    ref.current.rotation.y -= delta * 0.06;
-    ref.current.rotation.z += delta * 0.03;
+  useFrame((state) => {
+    const group = groupRef.current;
+    if (group) {
+      group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, state.pointer.x * 0.35, 0.04);
+      group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, -state.pointer.y * 0.15 + 0.08, 0.04);
+    }
+
+    const t = state.clock.elapsedTime;
+    barsRef.current.forEach((mesh, i) => {
+      if (!mesh) return;
+      const h = SERIES[i] + Math.sin(t * 0.6 + i * 0.9) * 0.18;
+      mesh.scale.y = h;
+      mesh.position.y = h / 2 + BASE_Y;
+
+      const x = (i - (count - 1) / 2) * SPACING;
+      linePositions[i * 3] = x;
+      linePositions[i * 3 + 1] = h + BASE_Y + 0.18;
+      linePositions[i * 3 + 2] = 0.42;
+    });
+
+    const attr = lineGeometry.getAttribute("position") as THREE.BufferAttribute;
+    attr.needsUpdate = true;
   });
+
   return (
-    <mesh ref={ref} scale={2.35}>
-      <icosahedronGeometry args={[1, 1]} />
-      <meshBasicMaterial color="#22d3ee" wireframe transparent opacity={0.12} />
-    </mesh>
+    <group ref={groupRef}>
+      {SERIES.map((h, i) => {
+        const x = (i - (count - 1) / 2) * SPACING;
+        return (
+          <mesh
+            key={i}
+            ref={(el) => {
+              barsRef.current[i] = el;
+            }}
+            position={[x, h / 2 + BASE_Y, 0]}
+          >
+            <boxGeometry args={[0.34, 1, 0.34]} />
+            <meshStandardMaterial
+              color="#123321"
+              emissive="#2f9e63"
+              emissiveIntensity={0.85}
+              roughness={0.35}
+              metalness={0.25}
+            />
+          </mesh>
+        );
+      })}
+
+      <primitive object={lineObject} />
+
+      <mesh position={[0, BASE_Y, 0]}>
+        <boxGeometry args={[count * SPACING + 0.4, 0.015, 0.015]} />
+        <meshBasicMaterial color="#3c4a41" />
+      </mesh>
+    </group>
   );
 }
 
@@ -64,23 +92,17 @@ export default function HeroScene() {
     <Canvas
       dpr={[1, 1.75]}
       gl={{ antialias: true, alpha: true }}
-      camera={{ position: [0, 0, 5.5], fov: 45 }}
+      camera={{ position: [0, 0.35, 5.6], fov: 42 }}
       className="!absolute inset-0"
     >
-      <ambientLight intensity={0.6} />
-      <pointLight position={[5, 5, 5]} intensity={80} color="#22d3ee" />
-      <pointLight position={[-5, -3, -5]} intensity={60} color="#8b5cf6" />
-      <Core />
-      <WireCore />
-      <Sparkles count={90} scale={[9, 6, 6]} size={2.2} speed={0.25} color="#9494b8" opacity={0.6} />
-      <fog attach="fog" args={["#05050a", 6, 11]} />
+      <ambientLight intensity={0.5} />
+      <pointLight position={[4, 4, 4]} intensity={70} color="#6be39b" />
+      <pointLight position={[-4, -2, -3]} intensity={40} color="#2f9e63" />
+      <DataChart />
+      <Sparkles count={36} scale={[8, 4, 5]} size={1.6} speed={0.2} color="#8a9a8f" opacity={0.35} />
+      <fog attach="fog" args={["#0a0f0c", 6.5, 11]} />
       <EffectComposer>
-        <Bloom
-          luminanceThreshold={0.15}
-          luminanceSmoothing={0.9}
-          intensity={0.9}
-          mipmapBlur
-        />
+        <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.85} intensity={0.75} mipmapBlur />
       </EffectComposer>
     </Canvas>
   );

@@ -5,7 +5,7 @@ import { education, languages, profile } from "@/lib/data";
 
 export function About() {
   return (
-    <section id="about" className="relative border-t border-white/5 bg-ink-900 py-28">
+    <section id="about" className="relative border-t border-ink-700 bg-ink-900 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Sobre mí"
@@ -19,7 +19,7 @@ export function About() {
 
           <div className="flex flex-col gap-6 lg:col-span-2">
             <Reveal delay={0.1} className="glass rounded-2xl p-6">
-              <div className="flex items-center gap-3 text-brand-cyan">
+              <div className="flex items-center gap-3 text-ledger">
                 <GraduationCap size={20} />
                 <span className="font-mono text-xs uppercase tracking-widest">Educación</span>
               </div>
@@ -33,7 +33,7 @@ export function About() {
             </Reveal>
 
             <Reveal delay={0.2} className="glass rounded-2xl p-6">
-              <div className="flex items-center gap-3 text-brand-violet">
+              <div className="flex items-center gap-3 text-ledger">
                 <Languages size={20} />
                 <span className="font-mono text-xs uppercase tracking-widest">Idiomas</span>
               </div>
@@ -46,7 +46,7 @@ export function About() {
                     </div>
                     <div className="mt-1.5 h-1.5 w-full overflow-hidden rounded-full bg-white/5">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-brand-violet to-brand-cyan"
+                        className="h-full rounded-full bg-gradient-to-r from-ledger to-ledger-glow"
                         style={{ width: `${(lang.level / 5) * 100}%` }}
                       />
                     </div>

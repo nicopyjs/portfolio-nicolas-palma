@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --ink-950: #05050a;
-  --ink-900: #0a0a14;
-  --ink-800: #12121f;
-  --ink-700: #1b1b2e;
-  --ink-500: #4b4b6b;
-  --ink-300: #9494b8;
-  --ink-50: #f2f2fa;
-  --brand-violet: #8b5cf6;
-  --brand-cyan: #22d3ee;
-  --brand-amber: #f59e0b;
+  --ink-950: #0a0f0c;
+  --ink-900: #0e1611;
+  --ink-800: #16201a;
+  --ink-700: #26332b;
+  --ink-500: #8a9a8f;
+  --ink-300: #b9c4bb;
+  --ink-50: #eff3ef;
+  --ledger: #2f9e63;
+  --ledger-glow: #6be39b;
+  --seal: #c79a46;
 }
 
 @theme inline {
@@ -21,9 +21,9 @@
   --color-ink-500: var(--ink-500);
   --color-ink-300: var(--ink-300);
   --color-ink-50: var(--ink-50);
-  --color-brand-violet: var(--brand-violet);
-  --color-brand-cyan: var(--brand-cyan);
-  --color-brand-amber: var(--brand-amber);
+  --color-ledger: var(--ledger);
+  --color-ledger-glow: var(--ledger-glow);
+  --color-seal: var(--seal);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-display);
@@ -39,8 +39,8 @@ body {
 }
 
 ::selection {
-  background: var(--brand-violet);
-  color: white;
+  background: var(--ledger);
+  color: var(--ink-950);
 }
 
 ::-webkit-scrollbar {
@@ -54,26 +54,39 @@ body {
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-violet);
+  background: var(--ledger);
 }
 
-.bg-grid {
+.bg-ledger-grid {
   background-image:
-    linear-gradient(to right, rgba(148, 148, 184, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 148, 184, 0.07) 1px, transparent 1px);
-  background-size: 44px 44px;
+    linear-gradient(to right, rgba(138, 154, 143, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(138, 154, 143, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 .text-gradient {
-  background: linear-gradient(120deg, var(--brand-violet), var(--brand-cyan));
+  background: linear-gradient(115deg, var(--ledger), var(--ledger-glow));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .glass {
-  background: rgba(18, 18, 31, 0.55);
+  background: rgba(14, 22, 17, 0.62);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(148, 148, 184, 0.12);
+  border: 1px solid rgba(138, 154, 143, 0.14);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
