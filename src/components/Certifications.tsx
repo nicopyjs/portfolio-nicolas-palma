@@ -33,7 +33,7 @@ export function Certifications() {
                 <Stamp
                   variant={cert.url ? "sealed" : "pending"}
                   size="sm"
-                  label={`${cert.issuer.toUpperCase()} · VERIFICADO · ${cert.issuer.toUpperCase()} · VERIFICADO ·`}
+                  label={`${cert.issuer.toUpperCase()} · VERIFICADO ·`}
                   className="mt-0.5 flex-shrink-0"
                 />
                 <div className="flex-1">

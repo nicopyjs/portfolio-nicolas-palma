@@ -63,7 +63,7 @@ export function Hero() {
             <Stamp
               variant="sealed"
               size="lg"
-              label="INGENIERO VERIFICADO · NEB CHILE · INGENIERO VERIFICADO · NEB CHILE ·"
+              label="INGENIERO VERIFICADO · NICOLÁS PALMA MARÍN ·"
             />
           </motion.div>
         </div>

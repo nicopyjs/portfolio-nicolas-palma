@@ -26,7 +26,7 @@ const SIZES = {
 export function Stamp({
   variant = "sealed",
   size = "sm",
-  label = "VERIFICADO · NICOLÁS PALMA · VERIFICADO · NICOLÁS PALMA ·",
+  label = "VERIFICADO · NICOLÁS PALMA ·",
   className,
 }: {
   variant?: "sealed" | "pending";
@@ -66,7 +66,7 @@ export function Stamp({
       >
         <path d={outerD} fill="none" stroke="var(--seal)" strokeWidth={2} />
         <defs>
-          <path id={RING_PATH_ID} d={`M ${CENTER},${CENTER} m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0`} />
+          <path id={RING_PATH_ID} d={`M ${CENTER},${CENTER} m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0`} />
         </defs>
         <text fill="var(--seal)" fontSize="6.4" letterSpacing="1.5" className="font-mono uppercase">
           <textPath href={`#${RING_PATH_ID}`} startOffset="0%">
