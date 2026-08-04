@@ -1,14 +1,37 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Sparkles } from "@react-three/drei";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 
 const SERIES = [1.1, 1.8, 0.9, 2.3, 1.5, 2.0, 1.2, 1.7, 0.85];
 const SPACING = 0.62;
 const BASE_Y = -1.2;
+const BASE_FOV = 42;
+
+function ResponsiveCamera() {
+  const { camera, size } = useThree();
+
+  useEffect(() => {
+    if (!(camera instanceof THREE.PerspectiveCamera)) return;
+    const aspect = size.width / size.height;
+    // Keep the base FOV for landscape/desktop; widen it on narrow
+    // (portrait/mobile) viewports so the same chart width stays visible
+    // instead of reading as a tight, cropped zoom.
+    const referenceAspect = Math.min(aspect, 1);
+    const targetHorizontalTan = Math.tan(THREE.MathUtils.degToRad(BASE_FOV) / 2);
+    const fov = THREE.MathUtils.radToDeg(
+      2 * Math.atan(targetHorizontalTan / referenceAspect)
+    );
+    camera.fov = Math.min(fov, 85);
+    camera.position.z = aspect < 1 ? 6.4 : 5.6;
+    camera.updateProjectionMatrix();
+  }, [camera, size]);
+
+  return null;
+}
 
 function DataChart() {
   const groupRef = useRef<THREE.Group>(null);
@@ -95,6 +118,7 @@ export default function HeroScene() {
       camera={{ position: [0, 0.35, 5.6], fov: 42 }}
       className="!absolute inset-0"
     >
+      <ResponsiveCamera />
       <ambientLight intensity={0.5} />
       <pointLight position={[4, 4, 4]} intensity={70} color="#6be39b" />
       <pointLight position={[-4, -2, -3]} intensity={40} color="#2f9e63" />
