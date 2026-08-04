@@ -136,8 +136,9 @@ export type Certification = {
   name: string;
   issuer: string;
   date: string;
-  url: string;
+  url?: string;
   description?: string;
+  inProgress?: boolean;
 };
 
 export const certifications: Certification[] = [
@@ -166,10 +167,25 @@ export const certifications: Certification[] = [
     date: "Noviembre 2025",
     url: "https://www.credly.com/badges/633046a3-ccab-4a55-bf10-c862dc2a77ce/public_url",
   },
+  {
+    name: "Google Data Analytics",
+    issuer: "Google",
+    date: "En curso",
+    description: "Certificado profesional: limpieza, análisis y visualización de datos con hojas de cálculo, SQL, Tableau y R.",
+    inProgress: true,
+  },
+  {
+    name: "Google Advanced Data Analytics",
+    issuer: "Google",
+    date: "En curso",
+    description: "Certificado profesional avanzado: estadística, Python, machine learning y storytelling con datos.",
+    inProgress: true,
+  },
 ];
 
-export const languages = [
+export type Language = { name: string; level: number; note?: string };
+
+export const languages: Language[] = [
   { name: "Español", level: 5 },
   { name: "Inglés", level: 4 },
-  { name: "Ruso", level: 1, note: "En curso" },
 ];

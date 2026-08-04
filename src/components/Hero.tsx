@@ -5,6 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { ArrowDown, Mail, MapPin } from "lucide-react";
 import { profile } from "@/lib/data";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
+import { Magnetic } from "./Magnetic";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
@@ -68,39 +69,47 @@ export function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href="#projects"
-            className="rounded-full bg-gradient-to-r from-brand-violet to-brand-cyan px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-brand-violet/20 transition-transform hover:scale-105"
-          >
-            Ver proyectos
-          </a>
-          <a
-            href="#contact"
-            className="rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-ink-50 transition-colors hover:bg-white/5"
-          >
-            Contactarme
-          </a>
+          <Magnetic>
+            <a
+              href="#projects"
+              className="inline-block rounded-full bg-gradient-to-r from-brand-violet to-brand-cyan px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-brand-violet/20 transition-transform hover:scale-105"
+            >
+              Ver proyectos
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="#contact"
+              className="inline-block rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-ink-50 transition-colors hover:bg-white/5"
+            >
+              Contactarme
+            </a>
+          </Magnetic>
 
           <span className="mx-1 hidden h-8 w-px bg-white/10 sm:block" />
 
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="GitHub"
-            className="rounded-full border border-white/15 p-3 text-ink-50 transition-colors hover:border-brand-cyan/50 hover:text-brand-cyan"
-          >
-            <GithubIcon size={18} />
-          </a>
-          <a
-            href={profile.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="LinkedIn"
-            className="rounded-full border border-white/15 p-3 text-ink-50 transition-colors hover:border-brand-cyan/50 hover:text-brand-cyan"
-          >
-            <LinkedinIcon size={18} />
-          </a>
+          <Magnetic strength={22}>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="GitHub"
+              className="inline-block rounded-full border border-white/15 p-3 text-ink-50 transition-colors hover:border-brand-cyan/50 hover:text-brand-cyan"
+            >
+              <GithubIcon size={18} />
+            </a>
+          </Magnetic>
+          <Magnetic strength={22}>
+            <a
+              href={profile.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="inline-block rounded-full border border-white/15 p-3 text-ink-50 transition-colors hover:border-brand-cyan/50 hover:text-brand-cyan"
+            >
+              <LinkedinIcon size={18} />
+            </a>
+          </Magnetic>
         </motion.div>
       </motion.div>
 

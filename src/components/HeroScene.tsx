@@ -2,6 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sparkles } from "@react-three/drei";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef, useState } from "react";
 import * as THREE from "three";
 
@@ -73,6 +74,14 @@ export default function HeroScene() {
       <WireCore />
       <Sparkles count={90} scale={[9, 6, 6]} size={2.2} speed={0.25} color="#9494b8" opacity={0.6} />
       <fog attach="fog" args={["#05050a", 6, 11]} />
+      <EffectComposer>
+        <Bloom
+          luminanceThreshold={0.15}
+          luminanceSmoothing={0.9}
+          intensity={0.9}
+          mipmapBlur
+        />
+      </EffectComposer>
     </Canvas>
   );
 }

@@ -1,6 +1,7 @@
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ExternalLink, Loader } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 import { certifications } from "@/lib/data";
 
 export function Certifications() {
@@ -10,16 +11,16 @@ export function Certifications() {
         <SectionHeading
           eyebrow="Aprendizaje continuo"
           title="Certificaciones"
-          description="Formación complementaria vigente, verificable en Credly."
+          description="Formación complementaria, vigente y en curso."
         />
 
         <div className="grid gap-5 sm:grid-cols-2">
           {certifications.map((cert, i) => (
             <Reveal key={cert.name} delay={i * 0.08}>
-              <a
+              <TiltCard
                 href={cert.url}
-                target="_blank"
-                rel="noreferrer"
+                target={cert.url ? "_blank" : undefined}
+                rel={cert.url ? "noreferrer" : undefined}
                 className="glass group flex items-start gap-4 rounded-2xl p-6 transition-colors hover:border-brand-cyan/40"
               >
                 <span className="rounded-xl bg-gradient-to-br from-brand-violet/20 to-brand-cyan/20 p-3 text-brand-cyan">
@@ -28,10 +29,18 @@ export function Certifications() {
                 <div className="flex-1">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="font-display font-semibold text-ink-50">{cert.name}</h3>
-                    <ExternalLink
-                      size={14}
-                      className="text-ink-500 transition-colors group-hover:text-brand-cyan"
-                    />
+                    {cert.url ? (
+                      <ExternalLink
+                        size={14}
+                        className="text-ink-500 transition-colors group-hover:text-brand-cyan"
+                      />
+                    ) : (
+                      cert.inProgress && (
+                        <span className="flex items-center gap-1 rounded-full border border-brand-amber/30 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-brand-amber">
+                          <Loader size={10} /> En curso
+                        </span>
+                      )
+                    )}
                   </div>
                   <p className="mt-1 text-xs text-ink-500">
                     {cert.issuer} · {cert.date}
@@ -40,7 +49,7 @@ export function Certifications() {
                     <p className="mt-2 text-sm text-ink-300">{cert.description}</p>
                   )}
                 </div>
-              </a>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

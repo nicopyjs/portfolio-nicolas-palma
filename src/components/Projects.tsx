@@ -1,8 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 import { projects } from "@/lib/data";
 
 export function Projects() {
@@ -18,11 +16,7 @@ export function Projects() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <Reveal key={project.name} delay={i * 0.1}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6"
-              >
+              <TiltCard className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-violet/20 blur-3xl transition-opacity duration-500 group-hover:opacity-80" />
 
                 <span className="font-mono text-xs uppercase tracking-widest text-brand-cyan">
@@ -52,7 +46,7 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
