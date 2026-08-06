@@ -170,9 +170,9 @@ export const certifications: Certification[] = [
   {
     name: "Google Data Analytics",
     issuer: "Google",
-    date: "En curso",
+    date: "Agosto 2026",
+    url: "https://www.coursera.org/account/accomplishments/specialization/P2T8JJN7I4GR",
     description: "Certificado profesional: limpieza, análisis y visualización de datos con hojas de cálculo, SQL, Tableau y R.",
-    inProgress: true,
   },
   {
     name: "Google Advanced Data Analytics",
