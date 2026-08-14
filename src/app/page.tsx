@@ -1,6 +1,9 @@
 import { Navbar } from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CursorGlow } from "@/components/CursorGlow";
+import { CustomCursor } from "@/components/CustomCursor";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { NoiseOverlay } from "@/components/NoiseOverlay";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
 import { About } from "@/components/About";
@@ -14,8 +17,11 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
+      <SmoothScroll />
+      <NoiseOverlay />
       <ScrollProgress />
       <CursorGlow />
+      <CustomCursor />
       <Navbar />
       <main className="flex-1">
         <Hero />

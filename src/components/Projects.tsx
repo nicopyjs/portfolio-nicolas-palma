@@ -1,5 +1,5 @@
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { StaggerGroup, StaggerItem } from "./Stagger";
 import { TiltCard } from "./TiltCard";
 import { projects } from "@/lib/data";
 
@@ -13,9 +13,9 @@ export function Projects() {
           description="Soluciones reales aplicadas a finanzas corporativas, protección civil y análisis de negocio."
         />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <Reveal key={project.name} delay={i * 0.1}>
+        <StaggerGroup className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <StaggerItem key={project.name}>
               <TiltCard className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-ledger/14 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
@@ -47,9 +47,9 @@ export function Projects() {
                   ))}
                 </div>
               </TiltCard>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

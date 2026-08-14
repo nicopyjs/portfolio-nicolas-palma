@@ -1,16 +1,21 @@
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { StaggerGroup, StaggerItem } from "./Stagger";
+import { Marquee } from "./Marquee";
 import { skillGroups } from "@/lib/data";
 
 export function Skills() {
+  const allSkills = skillGroups.flatMap((group) => group.skills);
+
   return (
     <section id="skills" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Stack" title="Habilidades y tecnologías" />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, i) => (
-            <Reveal key={group.title} delay={i * 0.08} className="glass rounded-2xl p-6">
+        <Marquee items={allSkills} className="mb-10" />
+
+        <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {skillGroups.map((group) => (
+            <StaggerItem key={group.title} className="glass rounded-2xl p-6">
               <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-ledger">
                 {group.title}
               </h3>
@@ -24,9 +29,9 @@ export function Skills() {
                   </span>
                 ))}
               </div>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

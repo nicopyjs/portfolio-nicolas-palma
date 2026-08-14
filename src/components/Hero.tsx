@@ -1,12 +1,14 @@
 "use client";
 
+import { useRef } from "react";
 import dynamic from "next/dynamic";
-import { motion, type Variants } from "framer-motion";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowDown, Mail, Phone } from "lucide-react";
 import { profile } from "@/lib/data";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 import { Magnetic } from "./Magnetic";
 import { Stamp } from "./Stamp";
+import { SplitWords } from "./SplitWords";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
@@ -21,12 +23,25 @@ const item: Variants = {
 };
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   return (
     <section
+      ref={sectionRef}
       id="top"
       className="relative flex min-h-screen items-center overflow-hidden bg-ink"
     >
-      <div className="bg-ledger-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
+      <motion.div
+        style={{ y: gridY }}
+        className="bg-ledger-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
+      />
       <div className="absolute inset-0">
         <HeroScene />
       </div>
@@ -36,6 +51,7 @@ export function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
+        style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto max-w-6xl px-6 pt-24"
       >
         <motion.span
@@ -46,13 +62,17 @@ export function Hero() {
         </motion.span>
 
         <div className="mt-6 flex flex-wrap items-center gap-5">
-          <motion.h1
-            variants={item}
-            className="max-w-3xl font-display text-4xl font-semibold leading-tight text-ink-50 sm:text-6xl"
-          >
-            Hola, soy {profile.name.split(" ")[0]}
-            <span className="text-gradient"> {profile.name.split(" ")[1]}.</span>
-          </motion.h1>
+          <h1 className="max-w-3xl font-display text-4xl font-semibold leading-tight text-ink-50 sm:text-6xl">
+            <SplitWords
+              delay={0.3}
+              words={[
+                { text: "Hola," },
+                { text: "soy" },
+                { text: profile.name.split(" ")[0] },
+                { text: `${profile.name.split(" ")[1]}.`, className: "text-gradient" },
+              ]}
+            />
+          </h1>
 
           <motion.div
             initial={{ opacity: 0, scale: 1.7, rotate: -20 }}

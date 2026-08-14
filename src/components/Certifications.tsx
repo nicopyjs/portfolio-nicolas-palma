@@ -1,6 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { StaggerGroup, StaggerItem } from "./Stagger";
 import { TiltCard } from "./TiltCard";
 import { Stamp } from "./Stamp";
 import { certifications } from "@/lib/data";
@@ -15,9 +15,9 @@ export function Certifications() {
           description="Cada credencial completada queda sellada; las que están en curso, todavía no."
         />
 
-        <div className="grid gap-5 sm:grid-cols-2">
-          {certifications.map((cert, i) => (
-            <Reveal key={cert.name} delay={i * 0.08}>
+        <StaggerGroup className="grid gap-5 sm:grid-cols-2">
+          {certifications.map((cert) => (
+            <StaggerItem key={cert.name}>
               <TiltCard
                 href={cert.url}
                 target={cert.url ? "_blank" : undefined}
@@ -46,9 +46,9 @@ export function Certifications() {
                   )}
                 </div>
               </TiltCard>
-            </Reveal>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { Briefcase, ExternalLink } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
-import { Reveal } from "./Reveal";
+import { StaggerGroup, StaggerItem } from "./Stagger";
 import { experience } from "@/lib/data";
 
 export function Experience() {
@@ -13,11 +13,11 @@ export function Experience() {
           description="Cada puesto, registrado en orden — del piso de práctica al rol híbrido de datos e ingeniería que ocupo hoy."
         />
 
-        <div className="relative border-l border-ink-700 pl-8 sm:pl-10">
+        <StaggerGroup className="relative border-l border-ink-700 pl-8 sm:pl-10">
           {experience.map((job, i) => {
             const entryNumber = experience.length - i;
             return (
-              <Reveal key={job.company} delay={i * 0.1} className="relative mb-14 last:mb-0">
+              <StaggerItem key={job.company} className="relative mb-14 last:mb-0">
                 <span className="absolute -left-[calc(2rem+5px)] top-1 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-br from-ledger to-ledger-glow shadow-[0_0_0_4px_rgba(47,158,99,0.15)] sm:-left-[calc(2.5rem+5px)]" />
 
                 <div className="glass rounded-2xl p-6 sm:p-8">
@@ -60,10 +60,10 @@ export function Experience() {
                     ))}
                   </ul>
                 </div>
-              </Reveal>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerGroup>
       </div>
     </section>
   );
