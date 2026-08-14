@@ -10,7 +10,10 @@ export function CursorGlow() {
   const springY = useSpring(y, { damping: 30, stiffness: 200 });
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const canAnimate =
+      window.matchMedia("(pointer: fine)").matches &&
+      window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+    if (!canAnimate) return;
 
     const handleMove = (e: MouseEvent) => {
       x.set(e.clientX);

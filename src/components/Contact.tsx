@@ -5,7 +5,7 @@ import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 
 export function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden py-28">
+    <section id="contact" className="relative scroll-mt-24 overflow-hidden py-28">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ledger/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-3xl px-6 text-center">
@@ -25,13 +25,15 @@ export function Contact() {
         <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href={`mailto:${profile.email}`}
-            className="flex items-center gap-2 rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-colors hover:bg-ledger-glow"
+            data-cursor-hover
+            className="flex items-center gap-2 rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-all duration-200 hover:bg-ledger-glow hover:shadow-ledger/40 active:scale-95"
           >
             <Mail size={16} /> {profile.email}
           </a>
           <a
             href={`tel:${profile.phone.replace(/\s/g, "")}`}
-            className="flex items-center gap-2 rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-colors hover:bg-ink-800"
+            data-cursor-hover
+            className="flex items-center gap-2 rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-all duration-200 hover:bg-ink-800 active:scale-95"
           >
             <Phone size={16} /> {profile.phone}
           </a>

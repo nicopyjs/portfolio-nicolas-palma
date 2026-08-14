@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
+import { SectionDivider } from "./SectionDivider";
 import { StaggerGroup, StaggerItem } from "./Stagger";
 import { TiltCard } from "./TiltCard";
 import { Stamp } from "./Stamp";
@@ -7,7 +8,8 @@ import { certifications } from "@/lib/data";
 
 export function Certifications() {
   return (
-    <section id="certifications" className="relative border-t border-ink-700 bg-ink-900 py-28">
+    <section id="certifications" className="relative scroll-mt-24 bg-ink-900 py-28">
+      <SectionDivider />
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Aprendizaje continuo"

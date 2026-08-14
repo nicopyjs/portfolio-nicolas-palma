@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
+import { PageIntro } from "@/components/PageIntro";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -47,7 +48,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-ink text-ink-50">{children}</body>
+      <body className="min-h-full flex flex-col bg-ink text-ink-50">
+        <PageIntro />
+        {children}
+      </body>
     </html>
   );
 }

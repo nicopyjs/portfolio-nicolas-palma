@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowDown, Mail, Phone } from "lucide-react";
 import { profile } from "@/lib/data";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 import { Magnetic } from "./Magnetic";
 import { Stamp } from "./Stamp";
@@ -28,9 +29,10 @@ export function Hero() {
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const gridY = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const reducedMotion = usePrefersReducedMotion();
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, reducedMotion ? 0 : 140]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, reducedMotion ? 0 : 40]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, reducedMotion ? 1 : 0]);
 
   return (
     <section
@@ -111,7 +113,8 @@ export function Hero() {
           <Magnetic>
             <a
               href="#projects"
-              className="inline-block rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-colors hover:bg-ledger-glow"
+              data-cursor-hover
+              className="inline-block rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-all duration-200 hover:bg-ledger-glow hover:shadow-ledger/40 active:scale-95"
             >
               Ver proyectos
             </a>
@@ -119,7 +122,8 @@ export function Hero() {
           <Magnetic>
             <a
               href="#contact"
-              className="inline-block rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-colors hover:bg-ink-800"
+              data-cursor-hover
+              className="inline-block rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-all duration-200 hover:bg-ink-800 active:scale-95"
             >
               Contactarme
             </a>

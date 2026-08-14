@@ -1,9 +1,11 @@
 import { profile } from "@/lib/data";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
+import { SectionDivider } from "./SectionDivider";
 
 export function Footer() {
   return (
-    <footer className="border-t border-ink-700 bg-ink-900 py-8">
+    <footer className="relative bg-ink-900 py-8">
+      <SectionDivider />
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-xs text-ink-500 sm:flex-row">
         <span>© {new Date().getFullYear()} {profile.name}. Todos los derechos reservados.</span>
         <span className="font-mono order-last sm:order-none">

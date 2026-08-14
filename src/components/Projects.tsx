@@ -1,11 +1,13 @@
 import { SectionHeading } from "./SectionHeading";
+import { SectionDivider } from "./SectionDivider";
 import { StaggerGroup, StaggerItem } from "./Stagger";
 import { TiltCard } from "./TiltCard";
 import { projects } from "@/lib/data";
 
 export function Projects() {
   return (
-    <section id="projects" className="relative border-t border-ink-700 bg-ink-900 py-28">
+    <section id="projects" className="relative scroll-mt-24 bg-ink-900 py-28">
+      <SectionDivider />
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Portafolio"
@@ -14,14 +16,19 @@ export function Projects() {
         />
 
         <StaggerGroup className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
+          {projects.map((project, i) => (
             <StaggerItem key={project.name}>
               <TiltCard className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-ledger/14 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
-                <span className="font-mono text-xs uppercase tracking-widest text-ledger">
-                  {project.period}
-                </span>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="font-mono text-xs uppercase tracking-widest text-ledger">
+                    {project.period}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-ink-500">
+                    Reg. {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
                 <h3 className="mt-2 font-display text-xl font-semibold text-ink-50">
                   {project.name}
                 </h3>

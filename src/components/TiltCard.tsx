@@ -44,10 +44,13 @@ export function TiltCard({ children, className, href, target, rel, ariaLabel }: 
         target={target}
         rel={rel}
         aria-label={ariaLabel}
+        data-cursor-hover
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        whileHover={{ scale: 1.015 }}
+        transition={{ type: "spring", stiffness: 300, damping: 24 }}
         style={style}
-        className={className}
+        className={`transition-colors duration-300 hover:border-ledger/30 ${className ?? ""}`}
       >
         {children}
       </motion.a>
@@ -56,10 +59,13 @@ export function TiltCard({ children, className, href, target, rel, ariaLabel }: 
 
   return (
     <motion.div
+      data-cursor-hover
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      whileHover={{ scale: 1.015 }}
+      transition={{ type: "spring", stiffness: 300, damping: 24 }}
       style={style}
-      className={className}
+      className={`transition-colors duration-300 hover:border-ledger/30 ${className ?? ""}`}
     >
       {children}
     </motion.div>

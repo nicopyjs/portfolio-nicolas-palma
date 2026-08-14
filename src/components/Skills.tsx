@@ -7,11 +7,14 @@ export function Skills() {
   const allSkills = skillGroups.flatMap((group) => group.skills);
 
   return (
-    <section id="skills" className="relative py-28">
+    <section id="skills" className="relative scroll-mt-24 py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Stack" title="Habilidades y tecnologías" />
 
-        <Marquee items={allSkills} className="mb-10" />
+        <div className="mb-10 flex flex-col gap-3">
+          <Marquee items={allSkills} />
+          <Marquee items={[...allSkills].reverse()} reverse muted />
+        </div>
 
         <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group) => (
