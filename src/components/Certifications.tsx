@@ -17,15 +17,18 @@ export function Certifications() {
         />
 
         <StaggerGroup className="grid gap-5 sm:grid-cols-2">
-          {certifications.map((cert) => {
+          {certifications.map((cert, i) => {
             const cardClassName =
               "glass group relative flex items-start gap-4 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-seal/40";
             const content = (
               <>
+                <span className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-widest text-ink-700 transition-colors group-hover:text-ink-500">
+                  N.º {String(i + 1).padStart(2, "0")}
+                </span>
                 {cert.url && (
                   <ExternalLink
                     size={13}
-                    className="absolute right-5 top-5 text-ink-500 opacity-0 transition-opacity group-hover:opacity-100"
+                    className="absolute right-5 top-9 text-ink-500 opacity-0 transition-opacity group-hover:opacity-100"
                   />
                 )}
                 <Stamp

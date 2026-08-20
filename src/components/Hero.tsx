@@ -47,6 +47,7 @@ export function Hero() {
       <LazyCanvas className="absolute inset-0">
         <HeroScene />
       </LazyCanvas>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-ink from-10% via-ink/75 via-45% to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink" />
 
       <motion.div
@@ -56,22 +57,26 @@ export function Hero() {
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto max-w-6xl px-6 pt-24"
       >
-        <motion.span
-          variants={item}
-          className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900/60 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-ledger"
-        >
-          Disponible para nuevos desafíos
-        </motion.span>
+        <motion.div variants={item} className="flex flex-wrap items-center gap-3">
+          <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900/60 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-ledger">
+            Disponible para nuevos desafíos
+          </span>
+          <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-ink-500">
+            N.º 001 <span className="text-ink-700">·</span> {profile.name}
+          </span>
+        </motion.div>
 
         <div className="mt-6 flex flex-wrap items-center gap-5">
-          <h1 className="max-w-3xl font-display text-4xl font-semibold leading-tight text-ink-50 sm:text-6xl">
+          <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.05] text-ink-50 sm:text-6xl">
             <SplitWords
               delay={0.3}
               words={[
-                { text: "Hola," },
-                { text: "soy" },
-                { text: profile.name.split(" ")[0] },
-                { text: `${profile.name.split(" ")[1]}.`, className: "text-gradient" },
+                { text: "Transformo" },
+                { text: "datos" },
+                { text: "dispersos" },
+                { text: "en" },
+                { text: "decisiones", className: "text-gradient" },
+                { text: "inteligentes.", className: "text-gradient" },
               ]}
             />
           </h1>
@@ -91,7 +96,7 @@ export function Hero() {
         </div>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-lg text-ink-300">
-          {profile.role}. {profile.tagline}
+          {profile.role}
         </motion.p>
 
         <motion.div variants={item} className="mt-4 flex flex-wrap gap-3 text-sm">
