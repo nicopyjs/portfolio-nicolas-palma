@@ -1,7 +1,6 @@
 import { SectionHeading } from "./SectionHeading";
 import { SectionDivider } from "./SectionDivider";
 import { StaggerGroup, StaggerItem } from "./Stagger";
-import { TiltCard } from "./TiltCard";
 import { projects } from "@/lib/data";
 
 export function Projects() {
@@ -18,7 +17,7 @@ export function Projects() {
         <StaggerGroup className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
             <StaggerItem key={project.name}>
-              <TiltCard className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6">
+              <div className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-ledger/30">
                 <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-ledger/14 blur-3xl transition-opacity duration-500 group-hover:opacity-90" />
 
                 <div className="flex items-start justify-between gap-3">
@@ -53,7 +52,7 @@ export function Projects() {
                     </span>
                   ))}
                 </div>
-              </TiltCard>
+              </div>
             </StaggerItem>
           ))}
         </StaggerGroup>

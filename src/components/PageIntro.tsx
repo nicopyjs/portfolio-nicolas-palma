@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Stamp } from "./Stamp";
 
@@ -10,6 +10,7 @@ const HOLD_MS = 900;
 export function PageIntro() {
   const [mounted, setMounted] = useState(false);
   const [show, setShow] = useState(false);
+  const startedRef = useRef(false);
 
   useEffect(() => {
     // One-time client bootstrap: decides whether to play the intro based on
@@ -18,12 +19,19 @@ export function PageIntro() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
 
-    const reduced = !window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
-    const seen = sessionStorage.getItem(SESSION_KEY);
-    if (reduced || seen) return;
-
-    sessionStorage.setItem(SESSION_KEY, "1");
-    setShow(true);
+    // startedRef (not sessionStorage) guards the decision so React's dev-mode
+    // double effect invocation can't race: the first pass's cleanup always
+    // clears its own timer, so the hide timer must be (re)armed on every
+    // effect run, while the "should we show at all" decision runs only once.
+    if (!startedRef.current) {
+      startedRef.current = true;
+      const reduced = !window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
+      const seen = sessionStorage.getItem(SESSION_KEY);
+      if (!reduced && !seen) {
+        sessionStorage.setItem(SESSION_KEY, "1");
+        setShow(true);
+      }
+    }
 
     const timer = setTimeout(() => setShow(false), HOLD_MS);
     return () => clearTimeout(timer);

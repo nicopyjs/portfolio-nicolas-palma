@@ -2,7 +2,6 @@ import { ExternalLink } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { SectionDivider } from "./SectionDivider";
 import { StaggerGroup, StaggerItem } from "./Stagger";
-import { TiltCard } from "./TiltCard";
 import { Stamp } from "./Stamp";
 import { certifications } from "@/lib/data";
 
@@ -18,14 +17,11 @@ export function Certifications() {
         />
 
         <StaggerGroup className="grid gap-5 sm:grid-cols-2">
-          {certifications.map((cert) => (
-            <StaggerItem key={cert.name}>
-              <TiltCard
-                href={cert.url}
-                target={cert.url ? "_blank" : undefined}
-                rel={cert.url ? "noreferrer" : undefined}
-                className="glass group relative flex items-start gap-4 rounded-2xl p-6 transition-colors hover:border-seal/40"
-              >
+          {certifications.map((cert) => {
+            const cardClassName =
+              "glass group relative flex items-start gap-4 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-seal/40";
+            const content = (
+              <>
                 {cert.url && (
                   <ExternalLink
                     size={13}
@@ -47,9 +43,21 @@ export function Certifications() {
                     <p className="mt-2 text-sm text-ink-300">{cert.description}</p>
                   )}
                 </div>
-              </TiltCard>
-            </StaggerItem>
-          ))}
+              </>
+            );
+
+            return (
+              <StaggerItem key={cert.name}>
+                {cert.url ? (
+                  <a href={cert.url} target="_blank" rel="noreferrer" className={cardClassName}>
+                    {content}
+                  </a>
+                ) : (
+                  <div className={cardClassName}>{content}</div>
+                )}
+              </StaggerItem>
+            );
+          })}
         </StaggerGroup>
       </div>
     </section>

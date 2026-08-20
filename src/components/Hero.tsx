@@ -7,7 +7,6 @@ import { ArrowDown, Mail, Phone } from "lucide-react";
 import { profile } from "@/lib/data";
 import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
-import { Magnetic } from "./Magnetic";
 import { Stamp } from "./Stamp";
 import { SplitWords } from "./SplitWords";
 import { LazyCanvas } from "./LazyCanvas";
@@ -111,49 +110,39 @@ export function Hero() {
         </motion.div>
 
         <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
-          <Magnetic>
-            <a
-              href="#projects"
-              data-cursor-hover
-              className="inline-block rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-all duration-200 hover:bg-ledger-glow hover:shadow-ledger/40 active:scale-95"
-            >
-              Ver proyectos
-            </a>
-          </Magnetic>
-          <Magnetic>
-            <a
-              href="#contact"
-              data-cursor-hover
-              className="inline-block rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-all duration-200 hover:bg-ink-800 active:scale-95"
-            >
-              Contactarme
-            </a>
-          </Magnetic>
+          <a
+            href="#projects"
+            className="inline-block rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ledger-glow hover:shadow-ledger/40 active:scale-95"
+          >
+            Ver proyectos
+          </a>
+          <a
+            href="#contact"
+            className="inline-block rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ink-800 active:scale-95"
+          >
+            Contactarme
+          </a>
 
           <span className="mx-1 hidden h-8 w-px bg-ink-700 sm:block" />
 
-          <Magnetic strength={22}>
-            <a
-              href={profile.github}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="inline-block rounded-full border border-ink-700 p-3 text-ink-50 transition-colors hover:border-ledger/50 hover:text-ledger"
-            >
-              <GithubIcon size={18} />
-            </a>
-          </Magnetic>
-          <Magnetic strength={22}>
-            <a
-              href={profile.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="inline-block rounded-full border border-ink-700 p-3 text-ink-50 transition-colors hover:border-ledger/50 hover:text-ledger"
-            >
-              <LinkedinIcon size={18} />
-            </a>
-          </Magnetic>
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="inline-block rounded-full border border-ink-700 p-3 text-ink-50 transition-colors hover:border-ledger/50 hover:text-ledger"
+          >
+            <GithubIcon size={18} />
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="inline-block rounded-full border border-ink-700 p-3 text-ink-50 transition-colors hover:border-ledger/50 hover:text-ledger"
+          >
+            <LinkedinIcon size={18} />
+          </a>
         </motion.div>
       </motion.div>
 

@@ -94,22 +94,6 @@ body {
   mix-blend-mode: overlay;
 }
 
-.cursor-ring {
-  display: none;
-}
-
-@media (pointer: fine) {
-  .custom-cursor a,
-  .custom-cursor button,
-  .custom-cursor [data-cursor-hover] {
-    cursor: none;
-  }
-
-  .custom-cursor .cursor-ring {
-    display: block;
-  }
-}
-
 .marquee-track {
   animation: marquee 28s linear infinite;
 }

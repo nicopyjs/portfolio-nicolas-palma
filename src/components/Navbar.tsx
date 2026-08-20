@@ -65,7 +65,6 @@ export function Navbar() {
               <li key={link.href} className="relative">
                 <a
                   href={link.href}
-                  data-cursor-hover
                   className={`relative block px-3 py-2 text-sm transition-colors ${
                     isActive ? "text-ledger" : "text-ink-300 hover:text-ink-50"
                   }`}
@@ -86,7 +85,6 @@ export function Navbar() {
 
         <a
           href="#contact"
-          data-cursor-hover
           className="hidden rounded-full border border-ledger/40 px-4 py-2 text-sm text-ink-50 transition-colors hover:bg-ledger/10 md:inline-block"
         >
           Hablemos

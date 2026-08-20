@@ -1,7 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { ScrollProgress } from "@/components/ScrollProgress";
-import { CursorGlow } from "@/components/CursorGlow";
-import { CustomCursor } from "@/components/CustomCursor";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { NoiseOverlay } from "@/components/NoiseOverlay";
 import { Hero } from "@/components/Hero";
@@ -21,8 +19,6 @@ export default function Home() {
       <SmoothScroll />
       <NoiseOverlay />
       <ScrollProgress />
-      <CursorGlow />
-      <CustomCursor />
       <Navbar />
       <main className="flex-1">
         <Hero />
