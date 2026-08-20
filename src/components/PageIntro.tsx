@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Stamp } from "./Stamp";
 
 const SESSION_KEY = "np-intro-seen";
-const HOLD_MS = 1350;
+const HOLD_MS = 900;
 
 export function PageIntro() {
   const [mounted, setMounted] = useState(false);

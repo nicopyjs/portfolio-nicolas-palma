@@ -5,6 +5,7 @@ import { GraduationCap, Languages } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { SectionDivider } from "./SectionDivider";
 import { Reveal } from "./Reveal";
+import { LazyCanvas } from "./LazyCanvas";
 import { education, languages, profile } from "@/lib/data";
 
 const AboutScene = dynamic(() => import("./AboutScene"), { ssr: false });
@@ -13,9 +14,9 @@ export function About() {
   return (
     <section id="about" className="relative scroll-mt-24 overflow-hidden bg-ink-900 py-28">
       <SectionDivider />
-      <div className="pointer-events-none absolute inset-0 opacity-60">
+      <LazyCanvas className="pointer-events-none absolute inset-0 opacity-60">
         <AboutScene />
-      </div>
+      </LazyCanvas>
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <SectionHeading
           eyebrow="Sobre mí"

@@ -10,6 +10,7 @@ import { GithubIcon, LinkedinIcon } from "./icons/BrandIcons";
 import { Magnetic } from "./Magnetic";
 import { Stamp } from "./Stamp";
 import { SplitWords } from "./SplitWords";
+import { LazyCanvas } from "./LazyCanvas";
 
 const HeroScene = dynamic(() => import("./HeroScene"), { ssr: false });
 
@@ -44,9 +45,9 @@ export function Hero() {
         style={{ y: gridY }}
         className="bg-ledger-grid absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]"
       />
-      <div className="absolute inset-0">
+      <LazyCanvas className="absolute inset-0">
         <HeroScene />
-      </div>
+      </LazyCanvas>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink" />
 
       <motion.div

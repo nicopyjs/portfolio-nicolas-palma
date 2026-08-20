@@ -7,7 +7,7 @@ export default function AboutScene() {
   return (
     <Canvas
       dpr={[1, 1.5]}
-      gl={{ antialias: true, alpha: true }}
+      gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
       camera={{ position: [0, 0, 6], fov: 45 }}
       className="!absolute inset-0"
     >

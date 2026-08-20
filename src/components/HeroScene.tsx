@@ -113,8 +113,8 @@ function DataChart() {
 export default function HeroScene() {
   return (
     <Canvas
-      dpr={[1, 1.75]}
-      gl={{ antialias: true, alpha: true }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
       camera={{ position: [0, 0.35, 5.6], fov: 42 }}
       className="!absolute inset-0"
     >
@@ -123,10 +123,10 @@ export default function HeroScene() {
       <pointLight position={[4, 4, 4]} intensity={70} color="#6be39b" />
       <pointLight position={[-4, -2, -3]} intensity={40} color="#2f9e63" />
       <DataChart />
-      <Sparkles count={36} scale={[8, 4, 5]} size={1.6} speed={0.2} color="#8a9a8f" opacity={0.35} />
+      <Sparkles count={24} scale={[8, 4, 5]} size={1.6} speed={0.2} color="#8a9a8f" opacity={0.35} />
       <fog attach="fog" args={["#0a0f0c", 6.5, 11]} />
       <EffectComposer>
-        <Bloom luminanceThreshold={0.2} luminanceSmoothing={0.85} intensity={0.75} mipmapBlur />
+        <Bloom luminanceThreshold={0.25} luminanceSmoothing={0.85} intensity={0.6} mipmapBlur />
       </EffectComposer>
     </Canvas>
   );
