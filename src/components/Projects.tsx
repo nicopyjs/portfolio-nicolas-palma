@@ -2,9 +2,11 @@ import { BarChart3, LineChart, Smartphone } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { SectionDivider } from "./SectionDivider";
 import { StaggerGroup, StaggerItem } from "./Stagger";
+import { ProjectPreview } from "./ProjectPreview";
 import { projects } from "@/lib/data";
 
 const ICONS = [LineChart, Smartphone, BarChart3];
+const PREVIEWS = ["dashboard", "mobile", "bi"] as const;
 
 export function Projects() {
   return (
@@ -23,7 +25,7 @@ export function Projects() {
             return (
               <StaggerItem key={project.name}>
                 {i > 0 && <div className="ledger-tear my-2" />}
-                <article className="group grid gap-6 py-8 transition-colors md:grid-cols-[8rem_1fr] md:gap-10">
+                <article className="group grid gap-6 py-8 transition-colors md:grid-cols-[8rem_1fr] md:gap-10 lg:grid-cols-[8rem_1fr_20rem]">
                   <div className="flex flex-row items-center gap-4 md:flex-col md:items-start md:gap-3">
                     <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full border border-ink-700 text-ledger transition-colors duration-300 group-hover:border-ledger/50 group-hover:bg-ledger/5">
                       <Icon size={22} strokeWidth={1.75} />
@@ -59,6 +61,10 @@ export function Projects() {
                         </span>
                       ))}
                     </div>
+                  </div>
+
+                  <div className="md:col-span-2 lg:col-span-1 lg:self-center">
+                    <ProjectPreview variant={PREVIEWS[i % PREVIEWS.length]} />
                   </div>
                 </article>
               </StaggerItem>

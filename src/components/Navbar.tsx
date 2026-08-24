@@ -85,7 +85,7 @@ export function Navbar() {
 
         <a
           href="#contact"
-          className="hidden rounded-full border border-ledger/40 px-4 py-2 text-sm text-ink-50 transition-colors hover:bg-ledger/10 md:inline-block"
+          className="glow-pulse hidden rounded-full border border-ledger/40 px-4 py-2 text-sm text-ink-50 transition-colors hover:bg-ledger/10 md:inline-block"
         >
           Hablemos
         </a>

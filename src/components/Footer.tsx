@@ -9,7 +9,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-xs text-ink-500 sm:flex-row">
         <span>© {new Date().getFullYear()} {profile.name}. Todos los derechos reservados.</span>
         <span className="font-mono order-last sm:order-none">
-          Diseñado y desarrollado con Next.js, Three.js & Framer Motion
+          Diseñado y desarrollado con Next.js, Tailwind CSS & Framer Motion
         </span>
         <div className="flex items-center gap-4">
           <a

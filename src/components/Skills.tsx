@@ -11,10 +11,14 @@ export function Skills() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Stack" title="Habilidades y tecnologías" />
 
-        <div className="mb-10 flex flex-col gap-3">
+        <div className="mb-8 flex flex-col gap-2 opacity-90">
           <Marquee items={allSkills} />
           <Marquee items={[...allSkills].reverse()} reverse muted />
         </div>
+
+        <p className="mb-6 font-mono text-xs uppercase tracking-widest text-ink-500">
+          Detalle completo por categoría
+        </p>
 
         <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skillGroups.map((group) => (

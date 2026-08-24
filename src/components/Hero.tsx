@@ -54,6 +54,10 @@ export function Hero() {
         <div>
           <motion.div variants={item} className="flex flex-wrap items-center gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900/60 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-ledger">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ledger-glow opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ledger-glow" />
+              </span>
               Disponible para nuevos desafíos
             </span>
             <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-ink-500">
@@ -116,7 +120,7 @@ export function Hero() {
           <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#projects"
-              className="inline-block rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ledger-glow hover:shadow-ledger/40 active:scale-95"
+              className="glow-pulse inline-block rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 transition-all duration-200 hover:-translate-y-0.5 hover:bg-ledger-glow active:scale-95"
             >
               Ver proyectos
             </a>
