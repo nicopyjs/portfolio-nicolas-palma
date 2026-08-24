@@ -150,7 +150,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <motion.div variants={item} className="hidden justify-self-end lg:block">
+        <motion.div variants={item} className="lg:justify-self-end">
           <TerminalHero />
         </motion.div>
       </motion.div>
