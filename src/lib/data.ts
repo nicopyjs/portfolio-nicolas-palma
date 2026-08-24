@@ -1,11 +1,18 @@
+const email = "nicolaspalma.it@gmail.com";
+const phone = "+56 9 4959 0206";
+
 export const profile = {
   name: "Nicolás Palma Marín",
   role: "Ingeniero en Informática · BI & Software Engineer",
   tagline:
     "Transformo datos dispersos en ecosistemas digitales que impulsan decisiones inteligentes.",
   location: "Puente Alto, Región Metropolitana, Chile",
-  email: "nicolaspalma.it@gmail.com",
-  phone: "+56 9 4959 0206",
+  email,
+  phone,
+  // Deep links so the contact buttons open WhatsApp / Gmail directly
+  // instead of falling back to whatever app the OS has set as default.
+  whatsapp: `https://wa.me/${phone.replace(/[^\d]/g, "")}`,
+  gmailCompose: `https://mail.google.com/mail/?view=cm&fs=1&to=${email}`,
   linkedin: "https://linkedin.com/in/nicolaspalmamarin",
   github: "https://github.com/nicopyjs",
   summary:

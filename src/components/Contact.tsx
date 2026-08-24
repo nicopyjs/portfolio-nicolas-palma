@@ -24,13 +24,17 @@ export function Contact() {
 
         <Reveal delay={0.15} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
-            href={`mailto:${profile.email}`}
+            href={profile.gmailCompose}
+            target="_blank"
+            rel="noreferrer"
             className="flex items-center gap-2 rounded-full bg-ledger px-6 py-3 text-sm font-medium text-ink-950 shadow-lg shadow-ledger/20 transition-all duration-200 hover:bg-ledger-glow hover:shadow-ledger/40 active:scale-95"
           >
             <Mail size={16} /> {profile.email}
           </a>
           <a
-            href={`tel:${profile.phone.replace(/\s/g, "")}`}
+            href={profile.whatsapp}
+            target="_blank"
+            rel="noreferrer"
             className="flex items-center gap-2 rounded-full border border-ink-700 px-6 py-3 text-sm font-medium text-ink-50 transition-all duration-200 hover:bg-ink-800 active:scale-95"
           >
             <Phone size={16} /> {profile.phone}

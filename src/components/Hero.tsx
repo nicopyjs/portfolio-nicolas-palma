@@ -96,13 +96,17 @@ export function Hero() {
 
           <motion.div variants={item} className="mt-4 flex flex-wrap gap-3 text-sm">
             <a
-              href={`mailto:${profile.email}`}
+              href={profile.gmailCompose}
+              target="_blank"
+              rel="noreferrer"
               className="glass flex items-center gap-2 rounded-full px-4 py-2 text-ink-50 transition-colors hover:text-ledger"
             >
               <Mail size={16} className="text-ledger" /> {profile.email}
             </a>
             <a
-              href={`tel:${profile.phone.replace(/\s/g, "")}`}
+              href={profile.whatsapp}
+              target="_blank"
+              rel="noreferrer"
               className="glass flex items-center gap-2 rounded-full px-4 py-2 text-ink-50 transition-colors hover:text-ledger"
             >
               <Phone size={16} className="text-ledger" /> {profile.phone}
